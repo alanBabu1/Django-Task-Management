@@ -1,0 +1,28 @@
+{% extends 'base2.html' %}
+{% load crispy_forms_tags %}
+<br><br>
+{% block body %}
+<style>
+    .BTN1{
+        font-size: 18px; 
+        margin: 20px;
+    }
+</style>
+<body>
+    <div class="container shadow-md p-5 formLayout">
+        <h2 class="ab1">Hi <span style="color: red ;">{{user}}</span>... YOU CAN DELETE YOUR TASK NOW...</h2> 
+        <form class="form-group row " method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <p  style="font-size:20px ; margin-top: 20px;">Are you sure, You want to Delete ?</p><br><br><br>
+            <div  class='BTN1'>
+                <input class=" btn btn-outline-primary BTN1" type="submit" value="Delete">&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-outline-primary BTN1" type="button" href="{% url 'assigned' %}">Cancel</a>&nbsp;&nbsp;&nbsp;
+                <img src="https://img.icons8.com/dusk/64/null/delete-property.png"/>
+            </div>
+        </form>
+        <div class="div">
+       
+    </div>
+    </div>
+</body>    
+{% endblock %}

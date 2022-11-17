@@ -1,0 +1,41 @@
+{% extends 'base2.html' %}
+
+{% load crispy_forms_tags %}
+<br><br>
+{% block body %}
+<style>
+    .a1{
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .a3{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 40px;
+        opacity:90% ;
+    }
+    .a4{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 30px;
+        opacity:80% ;
+    }
+</style>
+<body>
+    
+
+    <div class="container  shadow-md p-5 text-center">
+        <h1  class="a1">"Welcome to TASK MANAGEMENT <span style="color:red ;"> PORTAL</span>"</h1><br><br>
+        <h3 class="a3">The easiest way to manage team projects and tasks</h3><br><br>
+        <h4 class="a4">Why use US? Because only TASK MANAGEMENT <span style="color:red ;"> PORTAL</span>'s Work Graph® data model gives teams everything they need to stay in sync, hit deadlines, and reach their goals.</h4>
+        
+        <img src="https://img.icons8.com/dusk/64/null/task.png"/>
+        <img src="https://img.icons8.com/dusk/100/null/microsoft-planner.png"/>
+        <img src="https://img.icons8.com/dusk/64/null/realtime-protection.png"/>
+       
+        <br><br>
+        {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <p id="message-timer" class="alert alert-success float-center text-center">{{message}}</p>
+                {% endif %}
+        {% endfor %}
+    </div>
+</body>    
+{% endblock %}

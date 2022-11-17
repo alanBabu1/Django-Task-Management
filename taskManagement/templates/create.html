@@ -1,0 +1,62 @@
+{% extends 'base2.html' %}
+
+{% load crispy_forms_tags %}
+<br><br>
+
+{% block body %}
+<style>
+ .row{
+ font-size: 15px;
+ 
+}
+ .btn1{
+     border-radius:20px;
+     color: rgb(223, 51, 94);
+     background-color:rgb(182, 243, 232);
+    font-size: 15px; 
+    margin-top: 15px;
+  }
+  .b1{
+   text-align: center;
+  }
+  .c5{
+    margin-top: 50px;
+  }
+.img1{
+    height: 250px;
+}
+.ab1{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 40px;
+        opacity:90% ;
+
+}
+</style>
+<body>
+    
+
+    <div class="container c5">
+        <div class="row">
+            <div class="col-4">
+                <h2 class="ab1"> Hi <span style="color: red ;">{{user}}</span> .. <br> <br>
+                    You can add your tasks here... 
+              <div class="div">
+                <img class="img1" src="https://img.icons8.com/dusk/64/null/list--v1.png"/>
+              </div>
+            </div> 
+            <div class="col-3" style="margin: 0px auto;">
+                <form class="form-group row  c3" method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <br>
+                    <div  class='btn1'>
+                        <input class="btn-outline-primary btn1" type="submit" value="Create">&nbsp;&nbsp;&nbsp;
+                       
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+</body>
+{% endblock %}

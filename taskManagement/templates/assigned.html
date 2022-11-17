@@ -1,0 +1,52 @@
+{% extends 'base2.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<br>
+    {% if task.title == None  %}      
+        <h2> &nbsp;&nbsp;&nbsp;Hi <span style="color: red ;">{{user}}</span>....</h2><hr>
+        {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <p id="message-timer" class="alert alert-success float-center text-center">{{message}}</p>
+                {% endif %}
+        {% endfor %}
+        {% for i in task %}           
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-lg-6 ">
+                            <div class="card" style="width: 34rem;">
+                                <div class="card-body">
+                                    {% if i.status == 'open' %}
+                                        <div class="spinner-grow text-danger" role="status" style="height:25px ;width:25px;">
+                                            <span class="visually"></span>
+                                        </div>                            
+                                    {% elif i.status == 'In Progress' %}
+                                        <div class="spinner-grow text-warning" role="status">
+                                            <span class="visually"></span>
+                                        </div>                                        
+                                    {% else %}
+                                        <div class="spinner-grow text-success" role="status">
+                                            <span class="visually"></span>
+                                        </div>
+                                    {% endif %} 
+                                    <h5 class="card-title" style="color: rgb(18, 18, 18);">Title : {{i.title}}</h5>
+                                  
+                                    <h6 class="card-subtitle mb-2 text-muted">Task Assigned By : {{i.task_owner}}</h6>
+                                   
+                                    <h6 class="card-subtitle mb-2 ">Status : {{i.status}}</h6>
+                                    <h6 class="card-subtitle mb-2 ">Task Assigned To : {{i.user}}</h6>
+                                    <p class="card-text">Description : {{i.content}}</p>
+                                    
+                                    <a href="{% url 'update' i.id %}" class="card-link">Update Task</a>
+                                    <a href="{% url 'delete' i.id %}" class="card-link">Delete Task</a>
+                                </div>
+                            </div><br><br>
+                        </div>
+                    </div>
+                </div>                
+        {% endfor %} 
+    {% else %} 
+        <h2> &nbsp;&nbsp;&nbsp;Hi <span style="color: red ;">{{user}}</span>.... No any Task assigned by you... </h2>
+            
+    {% endif %} 
+{% endblock %}
+

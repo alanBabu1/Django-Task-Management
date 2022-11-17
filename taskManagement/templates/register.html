@@ -1,0 +1,53 @@
+{% extends 'base1.html' %}
+
+{% load crispy_forms_tags %}
+{% block body %}
+<style>
+    .C1{
+        margin-top: 50px;   
+    }
+  .a1{
+    margin-top: 25px;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .btn1{
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: rgb(36, 240, 192);
+    margin-top: 55px;
+  }
+  .img1{
+    height: 300px;
+    margin-left: 35px;
+  }
+  .p1{
+    font-size: 25px;
+  }
+  
+</style>
+<body>
+    <div class="container C1">
+        <div class="row">
+            <div class="col-5 c5">
+                <h1 class="a1">REGISTRATION PAGE</h1>
+                <img class="img1" src="https://img.icons8.com/dusk/100/null/edit-user-male.png"/>
+                <p class="p1">Already, have an account? &nbsp;&nbsp;<a href="{% url 'login' %}"> Login</a></p>    
+            </div>
+            <div class="col-5">
+                <form class="form-group row " method="post" style="font-size:14px;" >
+                    {% csrf_token %}          
+        
+                    {{form|crispy}}
+                  
+                    <div  class='btn-group butn' style="margin-top:25px ;">                
+                        <input class="btn btn-outline-primary btn1" type="submit" value="Register">&nbsp;&nbsp;&nbsp;
+                   
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  
+</body>
+{% endblock %}

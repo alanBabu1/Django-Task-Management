@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+<br><br>
+{% block body %}
+<style>
+    h1{
+        font-size: 40px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    h3{
+        font-size: 35px;
+        font-family: 'Times New Roman', Times, serif;
+        opacity: 80%;
+    }
+</style>
+<body style="background-color:rgb(182, 243, 232);">
+    <br><br>
+    <div class="text-center">
+        <img src="https://img.icons8.com/dusk/64/null/task.png"/>
+        <img src="https://img.icons8.com/dusk/64/null/resume.png"/>
+        <img src="https://img.icons8.com/dusk/64/null/conference-call.png"/>
+        <img src="https://img.icons8.com/dusk/64/null/video-conference.png"/>
+        <img src="https://img.icons8.com/dusk/64/null/planner.png"/>
+        <img src="https://img.icons8.com/dusk/64/null/overtime.png"/>
+        <img src="https://img.icons8.com/dusk/64/null/accounting.png"/>
+        <br><br><br>
+        <h1>THE ONLY TASK TOOL YOU NEED FOR TASK MANAGEMENT </h1><br><br>
+        <h3>Looking for task manager software to help you organize individual and team tasks in one shared space? With  TASK MANAGEMENT <span style="color:red ;"> PORTAL</span>, it’s easy to collaborate with your team, no matter where you are.</h3>
+     
+        <br><br>
+        <a class="btn btn-outline-primary" type="button" href="{% url 'register' %}">GET STARTED</a><br><br>
+        <br><br>
+        {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <p id="message-timer" class="alert alert-success float-center text-center">{{message}}</p>
+                {% endif %}
+        {% endfor %}
+    </div>
+</body>
+{% endblock %}
